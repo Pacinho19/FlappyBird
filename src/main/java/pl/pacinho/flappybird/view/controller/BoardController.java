@@ -19,7 +19,6 @@ public class BoardController {
     @Getter
     private Timer timer;
     private boolean jump;
-    private int jumpTick;
     private int ticks;
 
     @Getter
@@ -39,7 +38,7 @@ public class BoardController {
             timer.start();
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE && timer.isRunning() && !end) {
             if (canJump.compareAndSet(true, false))
-                startJump();
+                jump();
         } else if (e.getKeyCode() == KeyEvent.VK_R && timer.isRunning()) {
             restart();
         }
@@ -59,11 +58,6 @@ public class BoardController {
         ticks = 0;
         points = 0;
         refresh();
-    }
-
-    private void startJump() {
-        jump = true;
-        jumpTick = 3;
     }
 
     public void gameTick() {
@@ -131,10 +125,7 @@ public class BoardController {
 
     private void jump() {
         board.getBird().jump();
-        jumpTick--;
-
-        if (jumpTick == 0)
-            jump = false;
+        jump = false;
     }
 
     private void refresh() {

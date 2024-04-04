@@ -12,8 +12,8 @@ public class Bird extends Rectangle {
 
     private Image image;
 
-    private int velocityY = -12;
-    private final int gravity = 1;
+    private double velocityY = -9;
+    private final double gravity = 0.8;
 
     private final Dimension boardDimension;
     private final Dimension birdDimension;
@@ -41,7 +41,7 @@ public class Bird extends Rectangle {
 
     @SneakyThrows
     public void jump() {
-        velocityY = -12;
+        velocityY = -9;
         this.y = Math.max(y, 0);
     }
 
