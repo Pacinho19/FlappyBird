@@ -81,8 +81,8 @@ public class Board extends JPanel implements ActionListener {
         g.setColor(Color.WHITE);
 
         if(controller.getTimer().isRunning()){
-            controller.getTubes().forEach(tube -> g.drawImage(tube.getImage(), (int) tube.getX(), (int) tube.getY(), null));
-            g.drawImage(bird.getImage(), (int) bird.getX(), (int) bird.getY(), null);
+            controller.getTubes().forEach(tube -> g.drawImage(tube.getImage(), (int) tube.getX(), (int) tube.getY(), tube.width, tube.height, null));
+            g.drawImage(bird.getImage().getImage(), (int) bird.getX(), (int) bird.getY(), bird.getBirdDimension().width, bird.getBirdDimension().height, this);
         }else{
             g.drawImage(start, (background.getWidth(null) - start.getWidth(null)) / 2, (background.getHeight(null) - start.getHeight(null)) / 2, null);
         }
